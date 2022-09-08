@@ -1,0 +1,20 @@
+# игнорировать файлы и каталоги сборки и зависимостей
+app/
+
+src/*
+!src/script.js
+!src/style.scss
+
+node_modules/
+package-lock.json
+
+# игнорировать файлы, созданные ОС
+ehthumbs.db
+Thumbs.db
+*.DS_Store
+
+# игнорировать файлы настроек редакторов
+/.idea/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject

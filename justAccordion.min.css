@@ -1,1 +1,0 @@
-.accordion{--accordion-time:0.3s}.accordion__control{padding:0;background-color:transparent;border:0;cursor:pointer}.accordion__content{max-height:0;overflow:hidden;-webkit-transition:all var(--accordion-time) ease-out;transition:all var(--accordion-time) ease-out;will-change:max-height}
