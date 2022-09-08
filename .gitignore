@@ -1,10 +1,6 @@
 # игнорировать файлы и каталоги сборки и зависимостей
 app/
 
-src/*
-!src/script.js
-!src/style.scss
-
 node_modules/
 package-lock.json
 
