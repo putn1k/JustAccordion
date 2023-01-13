@@ -1,4 +1,4 @@
-const accordion = new justAccordion( '.accordion', {
+const accordion = new JustAccordion( '.accordion', {
   speed: 100,
   showFirst: true,
   showOnlyOne: true,

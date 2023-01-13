@@ -1,4 +1,4 @@
-# justAccordion
+# JustAccordion v0.1.1
 
 Простой и лёгкий плагин для аккордеона
 
@@ -9,11 +9,11 @@
 + __Доступность__. Аккордеон отвечает правилам доступности.
 + __Настройка с помощью CSS__. Вы можете легко менять внешний вид, расположение с помощью CSS.
 
-1. Скачайте js-библиотеку justAccordion.min.js и файл стилей justAccordion.min.css
+1. Скачайте js-библиотеку just-accordion.min.js и файл стилей just-accordion.min.css
 2. Подключите эти файлы к проекту
 ```html
-  <link rel="stylesheet" href="justAccordion.min.css">
-  <script src="justAccordion.min.js" defer></script>
+  <link rel="stylesheet" href="just-accordion.min.css">
+  <script src="just-accordion.min.js" defer></script>
 ```
 3. Поместите в ваш html-документ следующую разметку:
 ```html
@@ -44,7 +44,7 @@
 
 4. Разместите следующий JS-код для подключения табов:
 ```javascript
-const accordion = new justAccordion('.accordion');
+const accordion = new JustAccordion('.accordion');
 ```
 
 ## Методы и свойства
@@ -52,7 +52,7 @@ const accordion = new justAccordion('.accordion');
 Аккордеон поддерживает некоторые свойства и события
 
 ```javascript
-const accordion = new justAccordion('.accordion', {
+const accordion = new JustAccordion('.accordion', {
   speed: 1000,
   showFirst: true,
   showOnlyOne: true,

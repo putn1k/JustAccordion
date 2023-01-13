@@ -1,4 +1,4 @@
-class justAccordion {
+class JustAccordion {
   constructor( selector, options ) {
     const defaultOptions = {
       isOpen: () => {},

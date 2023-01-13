@@ -45,7 +45,7 @@ const stylesProd = () => {
       } )
     ] ) )
     .pipe( csscomb() )
-    .pipe( rename( 'justAccordion.min.css' ) )
+    .pipe( rename( 'just-accordion.min.css' ) )
     .pipe( dest( './dist/' ) )
     .pipe( cleanCSS( {
       level: 2
@@ -67,7 +67,7 @@ const scriptsProd = () => {
     .pipe( babel( {
       presets: [ '@babel/env' ]
     } ) )
-    .pipe( rename( 'justAccordion.min.js' ) )
+    .pipe( rename( 'just-accordion.min.js' ) )
     .pipe( uglify().on( "error", notify.onError() ) )
     .pipe( dest( './dist/' ) )
 }
