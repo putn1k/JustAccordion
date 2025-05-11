@@ -1,107 +1,218 @@
-# JustAccordion v0.1.1
+# JustAccordion
 
-Простой и лёгкий плагин для аккордеона
+A simple and lightweight accordion plugin
 
-## Информация
+## Overview
 
-+ __Никаких зависимостей__.  Библиотека написана на чистом JavaScript, для работы не требуются иные библиотеки.
-+ __Простота и функциональность__. Вы можете легко и быстро подключить и использовать библиотеку, которая реализует функционал для аккордеона
-+ __Доступность__. Аккордеон отвечает правилам доступности.
-+ __Настройка с помощью CSS__. Вы можете легко менять внешний вид, расположение с помощью CSS.
++ __No dependencies.__ <br>
+The library is written in pure JavaScript and requires no additional dependencies.
 
-1. Скачайте js-библиотеку just-accordion.min.js и файл стилей just-accordion.min.css
-2. Подключите эти файлы к проекту
-```html
-  <link rel="stylesheet" href="just-accordion.min.css">
-  <script src="just-accordion.min.js" defer></script>
++ __Simplicity and functionality.__ <br>
+Easily integrate and use the library to implement essential tab functionality.
+
++ __Accessibility.__ <br>
+The plugin follows all accessibility best practices.
+
++ __CSS customization.__ <br>
+Modify the appearance and layout effortlessly using CSS.
+
+## Installation
+
+1. Download the JS library __just-accordion.min.js__ and the stylesheet __just-accordion.min.css__  from the `dist` folder.<br>
+Alternatively, install via NPM:
+
 ```
-3. Поместите в ваш html-документ следующую разметку:
+npm i just-accordion
+```
+
+2. Include the files in your project:
+
+```html
+<link rel="stylesheet" href="just-accordion.min.css">
+<script src="just-accordion.min.js"></script>
+```
+
+Or (for module bundlers): 
+
+```javascript
+import 'just-accordion/dist/just-accordion.min.css';
+import JustAccordion from 'just-accordion';
+```
+
+3. Add the following HTML structure:
+
 ```html
 <div class="accordion">
-  <div class="accordion__item">
-    <button class="accordion__control">Button1</button>
-    <div class="accordion__content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eos illo amet saepe, nam molestiae
-      exercitationem consequuntur doloribus commodi optio suscipit veritatis quo debitis architecto!
+  <details>
+    <summary>Item</summary>
+    <div>
+      Content
     </div>
-  </div>
-  <div class="accordion__item">
-    <button class="accordion__control">Button2</button>
-    <div class="accordion__content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eos illo amet saepe, nam molestiae
-      exercitationem consequuntur doloribus commodi optio suscipit veritatis quo debitis architecto!
+  </details>
+  <details>
+    <summary>Item</summary>
+    <div>
+      Content
     </div>
-  </div>
-  <div class="accordion__item">
-    <button class="accordion__control">Button3</button>
-    <div class="accordion__content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia eos illo amet saepe, nam molestiae
-      exercitationem consequuntur doloribus commodi optio suscipit veritatis quo debitis architecto!
+  </details>
+  <details>
+    <summary>Item</summary>
+    <div>
+      Content
     </div>
-  </div>
+  </details>
 </div>
 ```
 
-4. Разместите следующий JS-код для подключения табов:
+> The structure of each item is implemented using the HTML `<details>` tag. The trigger must be a `<summary>` tag, and the content must be a `<div>` tag.
+
+4. Initialize the library:
+
 ```javascript
-const accordion = new JustAccordion('.accordion');
+new JustAccordion( '.accordion' );
 ```
 
-## Методы и свойства
-
-Аккордеон поддерживает некоторые свойства и события
+or
 
 ```javascript
-const accordion = new JustAccordion('.accordion', {
-  speed: 1000,
-  showFirst: true,
-  showOnlyOne: true,
-  activeHandlerClass: 'custom-active-class-btn',
-  activeContentClass: 'custom-active-class-content',
-  isOpen: (acc) => {
-    console.log(acc);
-  },
-  isClose: (acc) => {
-    console.log(acc);
-  }
-});
+const accordion = document.querySelector( '.accordion' );
+new JustAccordion( accordion );
 ```
 
-1. Событие `isOpen` - срабатывает в момент открытия аккордеона. Может принимать входной параметр - объект аккордеона. Пример:
+## Plugin Configuration
+
+The JustAccordion constructor accepts two arguments:
+
+* __Required__: A selector (string) or HTML element.
+* __Optional__: A configuration object.
+
+### Properties
+
+1. `el`
+
+To display only one accordion item at a time, set the `isToggleMode` property to `true` in the configuration object (default is `false`):
+
 ```javascript
-  isOpen: (acc) => {
-    console.log(acc);
-  }
+const accordion = new JustAccordion( '.accordion' );
+console.log( accordion.el ); // Выводит HTML Element аккордеона
+
 ```
 
-2. Событие `isClose` - срабатывает в момент закрытия аккордеона. Может принимать входной параметр - объект аккордеона. Пример: 
+2. `isToggleMode`
+
+To enable single-item mode (only one accordion item `open` at a time), set the `isToggleMode` property to `true` in the configuration object:
+
 ```javascript
-  isClose: (acc) => {
-    console.log(acc);
-  }
+new JustAccordion( '.accordion', {
+	isToggleMode: true
+} );
 ```
 
-3. Установка скорости открытия/закрытия аккордеона (по умолчанию 300)
+__Important! `isToggleMode` ignores all `open` attributes in the markup. To open a specific item, use the `active` property.__
+
+3. `active`
+
+When using `isToggleMode`, specify which item to open by default using the `active` property with the item's index:
+
 ```javascript
-  speed: 1000
+new JustAccordion( '.accordion', {
+	isToggleMode: true,
+  active: 1
+} );
 ```
 
-4. Показать контент первого элемента (по умолчанию false)
+The `active` property only works with `isToggleMode`. To have multiple items open by default, don't enable `isToggleMode` and add the `open` attribute to desired elements.
+
+4. `duration`
+
+To change the accordion's opening/closing speed, set the `duration` property in milliseconds:
+
 ```javascript
-  showFirst: true
+new JustAccordion( '.accordion', {
+	duration: 400
+} );
 ```
 
-5. Показывать только один элемент контента в момент переключения (по умолчанию false) 
-```javascript
-  showOnlyOne: true
+You can also control the speed via CSS:
+
+```css
+.accordion {
+	--accordion-duration: 0.4s;
+}
 ```
 
-6. Установка кастомного класса активной кнопке переключения 
+> Default duration is 0.3s (set in `just-accordion.min.css`)
+
+### Events
+
+1. `onInit`
+
+Triggered when the accordion initializes. Receives one argument: the accordion object.
+
 ```javascript
-  activeHandlerClass: 'custom-active-class-btn'
+new JustAccordion( '.accordion', {
+	onInit: ( accordion ) => {
+    // function body
+	}
+} );
 ```
 
-7. Установка кастомного класса активному элементу контента 
+2. `onClick`
+
+Triggered when clicking a summary element. Receives three arguments: the summary element, the accordion item, and the accordion object.
+
 ```javascript
-  activeContentClass: 'custom-active-class-content'  
+new JustAccordion( '.accordion', {
+	onClick: ( summary, item, accordion ) => {
+    // function body
+	}
+} );
+```
+
+3. `onOpen`
+
+Triggered when opening an accordion item. Unlike `onOpenComplete`, this fires immediately after click before internal processing. Receives two arguments: the accordion item and the accordion object.
+
+```javascript
+new JustAccordion( '.accordion', {
+	onOpen: ( item, accordion ) => {
+		// function body
+	}
+} );
+```
+
+4. `onOpenComplete`
+
+Triggered after an accordion item has fully opened (after internal processing). Receives two arguments: the accordion item and the accordion object.
+
+```javascript
+new JustAccordion( '.accordion', {
+	onOpenComplete: ( item, accordion ) => {
+		// function body
+	}
+} );
+```
+
+5. `onClose`
+
+Triggered when closing an accordion item. Unlike `onCloseComplete`, this fires immediately after click before internal processing. Receives two arguments: the accordion item and the accordion object.
+
+```javascript
+new JustAccordion( '.accordion', {
+	onClose: ( item, accordion ) => {
+		// function body
+	}
+} );
+```
+
+6. `onCloseComplete`
+
+Triggered after an accordion item has fully closed (after internal processing). Receives two arguments: the accordion item and the accordion object.
+
+```javascript
+new JustAccordion( '.accordion', {
+	onCloseComplete: ( item, accordion ) => {
+		// function body
+	}
+} );
 ```

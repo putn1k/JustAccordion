@@ -1,0 +1,39 @@
+// .accordion {
+//   --accordion-speed: 0.3s;
+
+//   box-sizing: border-box;
+
+//   *,
+//   *::before,
+//   *::after {
+//     box-sizing: inherit;
+//   }
+
+//   &__content {
+//     max-height: 0;
+//     overflow: hidden;
+//     will-change: max-height;
+//     transition: max-height var(--accordion-speed) ease-out;
+//   }
+// }
+
+.j-accordion {
+  box-sizing: border-box;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  &-item {
+    overflow: hidden;
+  }
+
+  &-content {
+    max-height: 0;
+    overflow: hidden;
+    will-change: max-height;
+    transition: max-height var(--accordion-duration, 0.3s) ease;
+  }
+}

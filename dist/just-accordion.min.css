@@ -1,1 +1,1 @@
-.accordion{--accordion-time:.3s}.accordion__control{padding:0;cursor:pointer;border:none;background-color:transparent}.accordion__content{overflow:hidden;max-height:0;transition:all var(--accordion-time) ease-out;will-change:max-height}
+.j-accordion{box-sizing:border-box}.j-accordion *,.j-accordion *::before,.j-accordion *::after{box-sizing:inherit}.j-accordion-item{overflow:hidden}.j-accordion-content{max-height:0;overflow:hidden;will-change:max-height;transition:max-height var(--accordion-duration, 0.3s) ease}
