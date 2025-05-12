@@ -90,12 +90,11 @@ The JustAccordion constructor accepts two arguments:
 
 1. `el`
 
-To display only one accordion item at a time, set the `isToggleMode` property to `true` in the configuration object (default is `false`):
+Get accordion element:
 
 ```javascript
 const accordion = new JustAccordion( '.accordion' );
-console.log( accordion.el ); // Выводит HTML Element аккордеона
-
+console.log( accordion.el ); // Outputting the accordion's HTML element
 ```
 
 2. `isToggleMode`
