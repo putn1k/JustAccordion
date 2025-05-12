@@ -1,6 +1,6 @@
 {
   "name": "just-accordion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/just-accordion.min.js",
   "description": "A simple and lightweight accordion plugin",
   "author": "putn1k",
